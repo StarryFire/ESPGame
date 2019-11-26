@@ -7,6 +7,11 @@ const Answer = require('../models/answer');
 const Image = require('../models/image');
 const constants = require('../constants');
 
+/**
+ * Populates the page with only those questions that the user haven't answered
+ * yet and gives preference to those questions for which there already exists 
+ * an answer from other users.
+ */
 router.get('/', async (req, res) => {
     if (!req.session.user) {
         res.redirect('/login')
@@ -70,6 +75,10 @@ router.get('/', async (req, res) => {
     }
 })
 
+/**
+ * Assigns points to the user and the other users who participated in the
+ * game before once the current user submits their responses.
+ */
 router.post('/', async (req, res) => {
     try {
         const curUserId = req.session.user._id;
@@ -114,6 +123,10 @@ router.post('/', async (req, res) => {
 
 })
 
+/**
+ * If the user has answered all the questions in the system, 
+ * this page is shown
+ */
 router.get('/checkBackAgain', (req, res) => {
     if (!req.session.user) {
         res.redirect('/login');
@@ -124,6 +137,10 @@ router.get('/checkBackAgain', (req, res) => {
     }
 })
 
+/**
+ * Displays the score of the user once they have completed a task
+ * a task here comprises of only 3 primary images ( questions )
+ */
 router.get('/score', async (req, res) => {
     if (!req.session.user) {
         res.redirect('/login');

@@ -24,7 +24,12 @@ router.get('/', async (req, res) => {
                 }
             ]
 
+            //Stores the count of the number of unique question,answer pair
             const questionsAnswerPairCount = await Answer.aggregate(aggregatorOpts)
+            /**
+             * Stores the questions that have reached consensus i.e. one or
+             * more users agree on the same answer for the specific question 
+            */
             const questionsConsensusSet = new Set();
             questionsAnswerPairCount
                 .filter(q => q.count >= 2)

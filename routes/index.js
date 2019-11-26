@@ -18,6 +18,9 @@ router.get('/register', (req, res) => {
     }
 })
 
+/**
+ * Stores the password in encrypted format using bcrypt hashing algorithm
+ */
 router.post('/register', async (req, res) => {
     const { name, username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -37,7 +40,9 @@ router.post('/register', async (req, res) => {
     }
 })
 
-
+/**
+ * creates a session for the user once the user logs in
+ */
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
     try {
@@ -91,8 +96,9 @@ router.get('/login', (req, res) => {
     }
 })
 
-
-
+/**
+ * destroys the session once the user logs out
+ */
 router.delete('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/login');
