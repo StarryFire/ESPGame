@@ -103,8 +103,8 @@ router.post('/', async (req, res) => {
                 const otherUser = await User.findById(otherUserId);
                 otherUser.score = otherUser.score + 1;
                 curUser.score = curUser.score + 1;
-                const savedOtherUser = await otherUser.save();
-                const savedCurUser = await curUser.save();
+                await otherUser.save();
+                await curUser.save();
             }
         }
         res.redirect('game/score');
