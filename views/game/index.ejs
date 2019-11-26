@@ -1,19 +1,4 @@
-<h1>ESP GAME TASK</h1>
-<div>
-    <form action="/game" method="POST">
-        <% questions.forEach(q => { %>
-        <div>
-            <h1>
-                Question
-                <img height="150" width="100" src="<%= q.pImage.imagePath %>" />
-            </h1>
-            <% q.sImages.forEach(sImage => { %>
-            <input required type="radio" name="<%= q.qId %>" value="<%= sImage.id %>">
-            <img height="150" width="100" src="<%= sImage.imagePath %>" />
-            <% }) %>
-        </div>
-        <% }) %>
-        <button type="submit">Submit</button>
-    </form>
-    <%- include('../partials/logout') %>
-</div>
+<h1>ESP GAME</h1>
+<a href="/game/game">
+    <button>Start Game</button>
+</a>

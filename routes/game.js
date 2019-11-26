@@ -7,12 +7,22 @@ const Answer = require('../models/answer');
 const Image = require('../models/image');
 const constants = require('../constants');
 
+router.get('/', async (req, res) => {
+    if (!req.session.user) {
+        res.redirect('/login')
+    } else if (req.session.user.isAdmin) {
+        res.redirect('/admin');
+    } else {
+        res.render('game/index');
+    }
+})
+
 /**
  * Populates the page with only those questions that the user haven't answered
  * yet and gives preference to those questions for which there already exists 
  * an answer from other users.
  */
-router.get('/', async (req, res) => {
+router.get('/game', async (req, res) => {
     if (!req.session.user) {
         res.redirect('/login')
     } else if (req.session.user.isAdmin) {
@@ -46,7 +56,7 @@ router.get('/', async (req, res) => {
             }
 
             if (qToAsk.length === 0) {
-                return res.redirect('game/checkBackAgain');
+                return res.redirect('/game/checkBackAgain');
             }
 
 
