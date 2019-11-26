@@ -1,0 +1,20 @@
+<h2>Login</h2>
+<form action="/login" method="POST">
+    <%- include('partials/errorMessage.ejs') %>
+    <div>
+        <label>Username</label>
+        <input type="text" name="username" value="<%= user.username %>" />
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" />
+    </div>
+    <div>
+        <button type="submit">Login</button>
+    </div>
+</form>
+<div>
+    <a href="/register">
+        <button>Register</button>
+    </a>
+</div>

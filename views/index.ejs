@@ -1,0 +1,21 @@
+<h1>ESP GAME TASK</h1>
+<div>
+    <form action="/" method="POST">
+        <% questions.forEach(q => { %>
+        <div>
+            <h1>
+                Question
+                <img height="150" width="100" src="<%= q.pImage.imagePath %>" />
+            </h1>
+            <% q.sImages.forEach(sImage => { %>
+            <input required type="radio" name="<%= q.qId %>" value="<%= sImage.id %>">
+            <img height="150" width="100" src="<%= sImage.imagePath %>" />
+            <% }) %>
+        </div>
+        <% }) %>
+        <button type="submit">Submit</button>
+    </form>
+    <form action="/logout?_method=DELETE" method="POST">
+        <button type="submit">Log Out</button>
+    </form>
+</div>
