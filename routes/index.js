@@ -5,6 +5,15 @@ const router = express.Router();
 const User = require('../models/user');
 const errorCodes = require('../errors');
 
+router.get('/', (req, res) => {
+    if (!req.session.user) {
+        res.redirect('login')
+    } else if (req.session.user.isAdmin) {
+        res.redirect('/admin');
+    } else {
+        res.redirect('/game');
+    }
+})
 
 router.get('/register', (req, res) => {
     if (!req.session.user) {

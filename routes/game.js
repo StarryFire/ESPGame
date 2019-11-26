@@ -76,7 +76,7 @@ router.get('/game', async (req, res) => {
                     sImages: sImages,
                 })
             }
-            res.render('game/index', {
+            res.render('game/game', {
                 questions: qData,
             });
         } catch (e) {
@@ -89,7 +89,7 @@ router.get('/game', async (req, res) => {
  * Assigns points to the user and the other users who participated in the
  * game before once the current user submits their responses.
  */
-router.post('/', async (req, res) => {
+router.post('/game', async (req, res) => {
     try {
         const curUserId = req.session.user._id;
         const curUser = await User.findById(curUserId)
@@ -126,7 +126,7 @@ router.post('/', async (req, res) => {
                 await curUser.save();
             }
         }
-        res.redirect('game/score');
+        res.redirect('/game/score');
     } catch (e) {
         console.log(e);
     }

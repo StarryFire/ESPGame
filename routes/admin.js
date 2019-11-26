@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
             questionsAnswerPairCount
                 .filter(q => q.count >= 2)
                 .map(q => q._id.question)
-                .forEach(qId => questionsConsensusSet.add(qId));
+                .forEach(qId => questionsConsensusSet.add(qId.toHexString()));
             if (questions.length === questionsConsensusSet.size)
                 res.render('admin/index', {
                     user: req.session.user,
