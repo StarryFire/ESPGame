@@ -1,8 +1,6 @@
 <h1>Hi <%= user.name %></h1>
 <h2>Your current score is <%= user.score %></h2>
-<a href="/">
+<a href="/game">
     <button>Play Again?</button>
 </a>
-<form action="/logout?_method=DELETE" method="POST">
-    <button type="submit">Log Out</button>
-</form>
+<%- include('../partials/logout') %>

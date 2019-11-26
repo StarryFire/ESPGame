@@ -1,10 +1,8 @@
 <div>
     <h1>Congratulations! You have answered all the questions!</h1>
     <h2>Check back again to see if there are more questions!</h2>
-    <a href="/score">
+    <a href="/game/score">
         <button>Go Back To Score Page</button>
     </a>
-    <form action="/logout?_method=DELETE" method="POST">
-        <button type="submit">Log Out</button>
-    </form>
+    <%- include('../partials/logout') %>
 </div>

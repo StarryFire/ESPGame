@@ -1,6 +1,6 @@
 <h1>ESP GAME TASK</h1>
 <div>
-    <form action="/" method="POST">
+    <form action="/game" method="POST">
         <% questions.forEach(q => { %>
         <div>
             <h1>
@@ -15,7 +15,5 @@
         <% }) %>
         <button type="submit">Submit</button>
     </form>
-    <form action="/logout?_method=DELETE" method="POST">
-        <button type="submit">Log Out</button>
-    </form>
+    <%- include('../partials/logout') %>
 </div>

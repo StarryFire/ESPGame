@@ -11,6 +11,8 @@ const methodOverride = require('method-override');
 
 
 const indexRouter = require('./routes/index')
+const gameRouter = require('./routes/game')
+const adminRouter = require('./routes/admin')
 
 
 const mongoose = require('mongoose');
@@ -41,5 +43,7 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use('/', indexRouter);
+app.use('/game', gameRouter);
+app.use('/admin', adminRouter);
 
 app.listen(process.env.PORT);
